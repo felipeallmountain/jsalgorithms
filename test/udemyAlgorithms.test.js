@@ -10,7 +10,7 @@ import {
   gcdArr
 } from '../src/udemyAlgorithms'
 
-describe.only('Udemy js algorithms', () => {
+describe('Udemy js algorithms', () => {
   describe('sum all values for input naive', () => {
     it('should return 28', () =>  {
       expect(addUpToSumNaive(7)).to.equal(28)
