@@ -7,7 +7,9 @@ import {
   sameNaive,
   sameRefactor,
   countUniqueValues,
-  gcdArr
+  gcdArr,
+  maxSubarrayNumNaive,
+  maxSubarrayNumRefactor
 } from '../src/udemyAlgorithms'
 
 describe('Udemy js algorithms', () => {
@@ -57,10 +59,10 @@ describe('Udemy js algorithms', () => {
     it('should return 2 when countUniqueValues([1, 1, 1, 2])', () => {
       expect(countUniqueValues([1, 1, 1, 2])).to.equal(2)
     })
-    it('should return 3 when countUniqueValues([1, 1, 1, 2])', () => {
+    it('should return 3 when countUniqueValues([-1, 1, 1, 2])', () => {
       expect(countUniqueValues([-1, 1, 1, 2])).to.equal(3)
     })
-    it('should return 4 when countUniqueValues([1, 1, 1, 2])', () => {
+    it('should return 4 when countUniqueValues([-2, -2, -1, -1, 0, 1])', () => {
       expect(countUniqueValues([-2, -2, -1, -1, 0, 1])).to.equal(4)
     })
   })
@@ -68,6 +70,19 @@ describe('Udemy js algorithms', () => {
   describe('greater common divisor', () => {
     it('should return 5', () => {
       expect(gcdArr([25, 35, 75, 125])).to.equal(5)
+    })
+  })
+
+  describe('max subarray naive', () => {
+    it('should return 9 when maxSubarrayNumNaive([1, 2, 3, 4, 5], 2)', () => {
+      expect(maxSubarrayNumNaive([1, 2, 3, 4, 5], 2)).to.equal(9)
+    })
+  })
+  describe.only('max subarray refactor', () => {
+    it('should return 9 when maxSubarrayNumRefactor([1, 2, 3, 4, 5], 2)', () => {
+      expect(
+        maxSubarrayNumRefactor([1, 3, 5, 6, 7, 3, 4, 6, 7, 7, 8, 3, 4, 7, 8, 7, 1, 1, 3, 4, 6, 7], 4)
+      ).to.equal(28)
     })
   })
 })

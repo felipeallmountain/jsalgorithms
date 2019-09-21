@@ -117,35 +117,22 @@ export const sameRefactor = (arr1, arr2) => {
  countUniqueValues([-2, -1, -1, 0, 1]) --> 4
 */
 export const countUniqueValues = list => {
-  switch(list.length) {
-    case 0:
-      return 0
-    case 1:
-      return 1
-    break;
-  }
-
+  // define low pointer
   let low = 0
-  let high = 1
-  let counter = 1
 
-  while (high < list.length) {
-    const lowVal = list[low]
-    const highVal = list[high]
-
-    if (lowVal !== highVal) {
+  // loop with high pointer
+  for (let high = 0; high < list.length; high++) {
+    // if list[low] is different than list[high], increase low, and assign list[high] value to list[low]
+    if (list[low] !== list[high]) {
       low++
-      high++
-      list[low] = highVal
-      counter++
-    } else {
-      high++
+      list[low] = list[high]
     }
   }
-  return counter
+
+  return low + 1
 }
 
-// GREATER COMMON DIVISOR
+// GREATER COMMON DIVISOR  ---> NO UDEMY
 const gcd = (a, b) => b === 0 ? a : gcd(b, a % b)
 
 export const gcdArr = arr => {
@@ -157,3 +144,61 @@ export const gcdArr = arr => {
   return factors
 }
 
+// SLIDING WINDOW PATTERN NAIVE
+/*
+  implement a function that takes the max sum of consecutive list elements given
+  a number
+*/
+export const maxSubarrayNumNaive = (list, num) => {
+  // return undefined if num is greater than list length
+  if (num > list.length) return
+
+  // define max number with -Infinity if there are negative numbers in the array
+  let max = -Infinity
+
+  // loop array and set limit to list length - num + 1, to avoid loop though last section
+  for (let i = 0; i < list.length - num + 1; i++) {
+    // declare number that holds the sum of the numbers
+    let numSum = 0
+    // loop num to sum the items 
+    for (let j = 0; j < num; j++) {
+      numSum += list[i + j]
+    }
+
+    // is sum is greater than max, assign max with sum
+    if (numSum > max) {
+      max = numSum
+    }
+  }
+
+  return max
+}
+
+// SLIDING WINDOW PATTER REFACTOR
+export const maxSubarrayNumRefactor = (list, num) => {
+  // check if num is more than list length
+  if (num > list.length) return
+
+  // declare max sum (maximum sum of numbers) and temp sum (temporary sum of numbers)
+  let maxSum = 0
+  let tempSum = 0
+
+  // loop first group of the list to assign maxSum as initial value
+  for (let i = 0; i < num; i++) {
+    maxSum += list[i]
+  }
+
+  // init tempSum with maxSum
+  tempSum = maxSum
+
+  // loop through the rest of the list starting at num
+  for (let i = num; i < list.length; i++) {
+    // substract to tempSum the [i - num] item, add [i] to the tempSum
+    tempSum = tempSum - list[i - num] + list[i]
+    // compare maxSum with tempSum and assign the max value
+    maxSum = Math.max(maxSum, tempSum)
+  }
+
+  // return maxSum after loop
+  return maxSum
+}
