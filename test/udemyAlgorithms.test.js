@@ -78,7 +78,7 @@ describe('Udemy js algorithms', () => {
       expect(maxSubarrayNumNaive([1, 2, 3, 4, 5], 2)).to.equal(9)
     })
   })
-  describe.only('max subarray refactor', () => {
+  describe('max subarray refactor', () => {
     it('should return 9 when maxSubarrayNumRefactor([1, 2, 3, 4, 5], 2)', () => {
       expect(
         maxSubarrayNumRefactor([1, 3, 5, 6, 7, 3, 4, 6, 7, 7, 8, 3, 4, 7, 8, 7, 1, 1, 3, 4, 6, 7], 4)

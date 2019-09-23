@@ -1,5 +1,11 @@
 import { expect } from 'chai'
-import { DataNode, findMiddleNode, generatePrimes } from '../src/coderByteAlgorithms';
+import {
+  DataNode,
+  findMiddleNode,
+  generatePrimes,
+  oddNumbers,
+  lotteryWinners
+} from '../src/coderByteAlgorithms';
 
 describe('Coder Byte Algorithms', () => {
   describe('Find the middle element of a linked list', () => {
@@ -41,6 +47,30 @@ describe('Coder Byte Algorithms', () => {
       expect(
         generatePrimes(18)
       ).to.equal('2,3,5,7,11,13,17')
+    })
+  })
+
+  describe('draw odd numbers', () => {
+    it('should return [3, 5, 7, 9] when input is (2, 10)', () => {
+      expect(oddNumbers(2, 10)).to.deep.equal([3, 5, 7, 9])
+    })
+    it('should return [3, 5, 7, 9] when input is (3, 9)', () => {
+      expect(oddNumbers(3, 9)).to.deep.equal([3, 5, 7, 9])
+    })
+    it('should return [3, 5, 7, 9] when input is (2, 9)', () => {
+      expect(oddNumbers(2, 9)).to.deep.equal([3, 5, 7, 9])
+    })
+    it('should return [3, 5, 7, 9] when input is (3, 10)', () => {
+      expect(oddNumbers(3, 10)).to.deep.equal([3, 5, 7, 9])
+    })
+  })
+
+  describe('lottery numbers', () => {
+    it('should return 2 when input is 10', () => {
+      expect(lotteryWinners(11)).to.equal(2)
+    })
+    it('should return 11 when input is 20', () => {
+      expect(lotteryWinners(20)).to.equal(11)
     })
   })
 })

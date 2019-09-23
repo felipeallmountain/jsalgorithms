@@ -32,3 +32,43 @@ export const generatePrimes = range => {
 
   return primes.join(',')
 }
+
+
+// Complete the oddNumbers function below.
+export const oddNumbers = (l, r) => {
+    let list = []
+    for (let i = l; i <= r; i += 2) {
+        const item = i % 2 ? i : i + 1
+        if (item <= r) {
+          list.push(item)
+        }
+    }
+    return list
+}
+
+// write lottery winners (admios test)
+
+const createLotteryNumbers = num  => {
+  let lotteryNums = []
+  for (let i = 1; i <= num; i++) {
+    const val = i % 9 === 0 ? 9 : i % 9
+    lotteryNums.push(val)
+  }
+  return lotteryNums
+}
+
+export const lotteryWinners = num => {
+  const lotteryNumbers = createLotteryNumbers(num)
+  let winners = 0
+
+  let low = 0
+
+  for (let high = 1; high < num; high++) {
+    const subs = lotteryNumbers[low] - lotteryNumbers[high]
+    if (subs === 0) {
+      winners++
+      low++
+    }
+  }
+  return winners
+}
