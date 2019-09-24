@@ -202,3 +202,44 @@ export const maxSubarrayNumRefactor = (list, num) => {
   // return maxSum after loop
   return maxSum
 }
+
+export const createList = num => {
+  let list = []
+  for (let i = 1; i <= num; i++) {
+    list.push(i)
+  }
+  return list
+}
+
+// DIVIDE AND CONQUER SEARCH
+export const searchVal = (arr, val) => {
+  // define min and max pointers
+  let min  = 0
+  let max = arr.length - 1
+
+  let counter = 0
+
+  // operate while min <= max
+  while (min <= max) {
+    counter++
+    // get middle with average of min and max
+    const middle = Math.floor((min + max) / 2)
+    
+    // get middle element
+    const middleElement = arr[middle]    
+
+    // if middleElement < val, set min to middle + 1
+    if (middleElement < val) {
+      min = middle + 1
+
+    // if middleElement > val, set max to middle -1
+    } else if (middleElement > val) {
+      max = middle - 1
+      
+    // return middle if matches val
+    } else {
+      return middle
+    }
+  }
+  return -1
+}

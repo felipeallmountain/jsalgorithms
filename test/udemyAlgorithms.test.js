@@ -9,7 +9,9 @@ import {
   countUniqueValues,
   gcdArr,
   maxSubarrayNumNaive,
-  maxSubarrayNumRefactor
+  maxSubarrayNumRefactor,
+  searchVal,
+  createList
 } from '../src/udemyAlgorithms'
 
 describe('Udemy js algorithms', () => {
@@ -83,6 +85,24 @@ describe('Udemy js algorithms', () => {
       expect(
         maxSubarrayNumRefactor([1, 3, 5, 6, 7, 3, 4, 6, 7, 7, 8, 3, 4, 7, 8, 7, 1, 1, 3, 4, 6, 7], 4)
       ).to.equal(28)
+    })
+  })
+
+  describe('divide and conquer search', () => {
+    it('should return 57 when (createList(1000), 568)', () => {
+      expect(
+        searchVal(createList(1000), 568)
+      ).to.equal(567)
+    })
+    it('should return 20 when (createList(10000), 21)', () => {
+      expect(
+        searchVal(createList(10000), 21)
+      ).to.equal(20)
+    })
+    it('should return 6384 when (createList(1000000), 6385)', () => {
+      expect(
+        searchVal(createList(1000000), 6385)
+      ).to.equal(6384)
     })
   })
 })
