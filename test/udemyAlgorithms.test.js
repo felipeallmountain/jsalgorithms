@@ -11,7 +11,9 @@ import {
   maxSubarrayNumNaive,
   maxSubarrayNumRefactor,
   searchVal,
-  createList
+  createList,
+  areThereDuplicatesFc,
+  areThereDuplicatesSet
 } from '../src/udemyAlgorithms'
 
 describe('Udemy js algorithms', () => {
@@ -103,6 +105,31 @@ describe('Udemy js algorithms', () => {
       expect(
         searchVal(createList(1000000), 6385)
       ).to.equal(6384)
+    })
+  })
+
+  describe('Are there duplicates Frequency Counter', () => {
+    it('should return true when args are (1, 2, 3, 3, 3)', () => {
+      expect(areThereDuplicatesFc(1, 2, 3, 3, 3)).to.equal(true)
+    })
+
+    it('should return false when args are none', () => {
+      expect(areThereDuplicatesFc()).to.equal(false)
+    })
+    it('should return false when args are (1, 2, 3)', () => {
+      expect(areThereDuplicatesFc(1, 2, 3)).to.equal(false)
+    })
+  })
+
+  describe('Are there duplicates Set solution', () => {
+    it('should return true when args are (1, 2, 3, 3, 3, 3)', () => {
+      expect(areThereDuplicatesSet(1, 2, 3, 3, 3, 3)).to.equal(true)
+    })
+    it('should return false when args are (1, 2, 3)', () => {
+      expect(areThereDuplicatesSet(1, 2, 3)).to.equal(false)
+    })
+    it('should return false when args are none', () => {
+      expect(areThereDuplicatesSet()).to.equal(false)
     })
   })
 })

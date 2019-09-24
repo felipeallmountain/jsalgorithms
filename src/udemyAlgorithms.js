@@ -121,7 +121,7 @@ export const countUniqueValues = list => {
   let low = 0
 
   // loop with high pointer
-  for (let high = 0; high < list.length; high++) {
+  for (let high = 1; high < list.length; high++) {
     // if list[low] is different than list[high], increase low, and assign list[high] value to list[low]
     if (list[low] !== list[high]) {
       low++
@@ -239,4 +239,28 @@ export const searchVal = (arr, val) => {
     }
   }
   return -1
+}
+
+// ARE THERE DUPLICATES (FREQUENCY COUNTER)
+export const areThereDuplicatesFc = (...args) => {
+  if (!args.length) return false
+
+  let collection = {}
+
+  // create frequency counter
+  for (let val in args) {
+    collection[args[val]] = (collection[args[val]] || 0) + 1
+  }
+
+  // check if FC has more than 1 value
+  for (let key in collection) {
+    if (collection[key] > 1) return true
+  }
+
+  return false
+}
+
+// ARE THERE DUPLICATES (SET SOLUTION)
+export const areThereDuplicatesSet = (...args) => {
+  return new Set(args).size !== args.length
 }
