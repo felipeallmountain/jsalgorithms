@@ -89,14 +89,14 @@ describe('Udemy js algorithms', () => {
   })
 
   describe('divide and conquer search', () => {
-    it('should return 57 when (createList(1000), 568)', () => {
+    it('should return 567 when (createList(1000, 300), 568)', () => {
       expect(
-        searchVal(createList(1000), 568)
-      ).to.equal(567)
+        searchVal(createList(1000, 300), 568)
+      ).to.equal(268)
     })
-    it('should return 20 when (createList(10000), 21)', () => {
+    it('should return 20 when (createList(100), 21)', () => {
       expect(
-        searchVal(createList(10000), 21)
+        searchVal(createList(100), 21)
       ).to.equal(20)
     })
     it('should return 6384 when (createList(1000000), 6385)', () => {
